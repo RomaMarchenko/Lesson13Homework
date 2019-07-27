@@ -1,23 +1,23 @@
 package lesson11homework;
 
 public class GoogleAPI implements API {
-    private Room[] rooms;
+    private Rooms[] rooms;
 
-    public GoogleAPI(Room[] rooms) {
+    public GoogleAPI(Rooms[] rooms) {
         this.rooms = rooms;
     }
 
-    public Room[] getRooms() {
+    public Rooms[] getRooms() {
         return rooms;
     }
 
     private int countAcceptableRooms(int price, int persons, String city, String hotel) {
         int index = 0;
         if(rooms != null) {
-            for (Room room : rooms) {
-                if (room.getCityName() == null || room.getHotelName() == null) {
+            for (Rooms rooms : this.rooms) {
+                if (rooms.getCityName() == null || rooms.getHotelName() == null) {
                 } else {
-                    if (room != null && price == room.getPrice() && persons == room.getPersons() && city == room.getCityName() && hotel == room.getHotelName()) {
+                    if (rooms != null && price == rooms.getPrice() && persons == rooms.getPersons() && city == rooms.getCityName() && hotel == rooms.getHotelName()) {
                         index++;
                     }
                 }
@@ -27,17 +27,17 @@ public class GoogleAPI implements API {
     }
 
     @Override
-    public Room[] findRooms(int price, int persons, String city, String hotel) {
+    public Rooms[] findRooms(int price, int persons, String city, String hotel) {
 
-        Room[] acceptableRooms = new Room[countAcceptableRooms(price, persons, city, hotel)];
+        Rooms[] acceptableRooms = new Rooms[countAcceptableRooms(price, persons, city, hotel)];
         int index = 0;
         if(rooms != null) {
-            for (Room room : rooms) {
-                if (room.getCityName() == null || room.getHotelName() == null || room == null) {
+            for (Rooms rooms : this.rooms) {
+                if (rooms.getCityName() == null || rooms.getHotelName() == null || rooms == null) {
                     System.err.println("Object has null fields or room is absent");
                 } else {
-                    if (room != null && price == room.getPrice() && persons == room.getPersons() && city == room.getCityName() && hotel == room.getHotelName()) {
-                        acceptableRooms[index] = room;
+                    if (rooms != null && price == rooms.getPrice() && persons == rooms.getPersons() && city == rooms.getCityName() && hotel == rooms.getHotelName()) {
+                        acceptableRooms[index] = rooms;
                         index++;
                     }
                 }
@@ -47,7 +47,7 @@ public class GoogleAPI implements API {
     }
 
     @Override
-    public Room[] getAll() {
+    public Rooms[] getAll() {
         return rooms;
     }
 }

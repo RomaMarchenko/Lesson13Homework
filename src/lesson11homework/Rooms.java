@@ -2,7 +2,7 @@ package lesson11homework;
 
 import java.util.Date;
 
-public class Room {
+public class Rooms {
     private long id;
     private int price;
     private int persons;
@@ -11,7 +11,7 @@ public class Room {
     private String cityName;
 
 
-    public Room(long id, int price, int persons, Date dateAvailableFrom, String hotelName, String cityName) {
+    public Rooms(long id, int price, int persons, Date dateAvailableFrom, String hotelName, String cityName) {
         this.id = id;
         this.price = price;
         this.persons = persons;

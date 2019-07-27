@@ -3,18 +3,18 @@ package lesson11homework;
 import java.util.Arrays;
 import java.util.Date;
 
-public class Demo {
+public class Demo2 {
     public static void main(String[] args) {
-        API[] apis;
-        Room room1 = new Room(4124, 100, 3, new Date(), "Plaza", "Kiev");
-        Room room2 = new Room(234156, 150, 3, new Date(), "Plaza", "Kiev");
-        Room room3 = new Room(25353, 100, 4, new Date(), "Plaza", "Kiev");
-        Room room4 = new Room(678, 5000, 2, new Date(), "Plaza", "Kiev");
-        Room room5= new Room(678, 5000, 2, new Date(), null, "Kiev");
-        Room room6 = new Room(678, 5000, 2, new Date(), "Plaza", null);
-        Room[] rooms1 = {room1, room2, room3, room4, room5, room6};
-        Room[] rooms2 = null;
-        Room[] rooms3 = {room5, room6};
+        API[] APIS;
+        Rooms room1 = new Rooms(4124, 100, 3, new Date(), "Plaza", "Kiev");
+        Rooms room2 = new Rooms(234156, 150, 3, new Date(), "Plaza", "Kiev");
+        Rooms room3 = new Rooms(25353, 100, 4, new Date(), "Plaza", "Kiev");
+        Rooms rooms4 = new Rooms(678, 5000, 2, new Date(), "Plaza", "Kiev");
+        Rooms rooms5 = new Rooms(678, 5000, 2, new Date(), null, "Kiev");
+        Rooms rooms6 = new Rooms(678, 5000, 2, new Date(), "Plaza", null);
+        Rooms[] rooms1 = {room1, room2, room3, rooms4, rooms5, rooms6};
+        Rooms[] rooms2 = null;
+        Rooms[] rooms3 = {rooms5, rooms6};
 
         BookingComAPI bookingComAPI1 = new BookingComAPI(rooms1);
         BookingComAPI bookingComAPI2 = new BookingComAPI(rooms2);

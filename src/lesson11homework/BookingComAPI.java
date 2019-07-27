@@ -3,23 +3,23 @@ package lesson11homework;
 import java.util.Arrays;
 
 public class BookingComAPI implements API {
-    private Room[] rooms;
+    private Rooms[] rooms;
 
-    public BookingComAPI(Room[] rooms) {
+    public BookingComAPI(Rooms[] rooms) {
         this.rooms = rooms;
     }
 
-    public Room[] getRooms() {
+    public Rooms[] getRooms() {
         return rooms;
     }
 
     private int countAcceptableRooms(int price, int persons, String city, String hotel) {
         int index = 0;
         if(rooms != null) {
-            for (Room room : rooms) {
-                if (room.getCityName() == null || room.getHotelName() == null || room == null) {
+            for (Rooms rooms : this.rooms) {
+                if (rooms.getCityName() == null || rooms.getHotelName() == null || rooms == null) {
                 } else {
-                    if ((price + 100) >= room.getPrice() && (price - 100) <= room.getPrice() && persons == room.getPersons() && city == room.getCityName() && hotel == room.getHotelName()) {
+                    if ((price + 100) >= rooms.getPrice() && (price - 100) <= rooms.getPrice() && persons == rooms.getPersons() && city == rooms.getCityName() && hotel == rooms.getHotelName()) {
                         index++;
                     }
                 }
@@ -29,16 +29,16 @@ public class BookingComAPI implements API {
     }
 
     @Override
-    public Room[] findRooms(int price, int persons, String city, String hotel) {
-            Room[] acceptableRooms = new Room[countAcceptableRooms(price, persons, city, hotel)];
+    public Rooms[] findRooms(int price, int persons, String city, String hotel) {
+            Rooms[] acceptableRooms = new Rooms[countAcceptableRooms(price, persons, city, hotel)];
             int index = 0;
         if(rooms != null){
-            for (Room room : rooms) {
-                if (room.getCityName() == null || room.getHotelName() == null || room == null) {
+            for (Rooms rooms : this.rooms) {
+                if (rooms.getCityName() == null || rooms.getHotelName() == null || rooms == null) {
                     System.err.println("Object has null fields or room is absent");
                 } else {
-                    if ((price + 100) >= room.getPrice() && (price - 100) <= room.getPrice() && persons == room.getPersons() && city == room.getCityName() && hotel == room.getHotelName()) {
-                        acceptableRooms[index] = room;
+                    if ((price + 100) >= rooms.getPrice() && (price - 100) <= rooms.getPrice() && persons == rooms.getPersons() && city == rooms.getCityName() && hotel == rooms.getHotelName()) {
+                        acceptableRooms[index] = rooms;
                         index++;
                     }
                 }
@@ -48,7 +48,7 @@ public class BookingComAPI implements API {
     }
 
     @Override
-    public Room[] getAll() {
+    public Rooms[] getAll() {
         return rooms;
     }
 

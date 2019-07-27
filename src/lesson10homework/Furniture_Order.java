@@ -2,10 +2,10 @@ package lesson10homework;
 
 import java.util.Date;
 
-public class FurnitureOrder extends Order {
+public class Furniture_Order extends Order {
     private String furnitureCode;
 
-    public FurnitureOrder(String itemName, Date dateCreated, String shipFromCity, String shipToCity, int basePrice, Customer customerOwned, String furnitureCode) {
+    public Furniture_Order(String itemName, Date dateCreated, String shipFromCity, String shipToCity, int basePrice, Customer customerOwned, String furnitureCode) {
         super(itemName, dateCreated, shipFromCity, shipToCity, basePrice, customerOwned);
         this.furnitureCode = furnitureCode;
     }

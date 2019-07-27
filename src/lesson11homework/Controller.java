@@ -1,25 +1,25 @@
 package lesson11homework;
 
 public class Controller {
-    private API[] apis;
+    private API[] APIS;
 
 
 
-    public Controller(API[] apis) {
-        this.apis = apis;
+    public Controller(API[] APIS) {
+        this.APIS = APIS;
     }
 
-    public API[] getApis() {
-        return apis;
+    public API[] getAPIS() {
+        return APIS;
     }
 
     private int countRooms(int price, int persons, String city, String hotel){
         int index = 0;
         int maxIndex = 0;
-        for(API api : apis) {
+        for(API api : APIS) {
             if (api != null) {
-                for (Room room : api.findRooms(price, persons, city, hotel)) {
-                    if (room != null) {
+                for (Rooms rooms : api.findRooms(price, persons, city, hotel)) {
+                    if (rooms != null) {
                         index++;
                         if(index > maxIndex){
                             maxIndex = index;
@@ -33,14 +33,14 @@ public class Controller {
     }
 
 
-    public Room[] requestRooms(int price, int persons, String city, String hotel){
-        Room[] wantedRooms = new Room[countRooms(price, persons, city, hotel)];
+    public Rooms[] requestRooms(int price, int persons, String city, String hotel){
+        Rooms[] wantedRooms = new Rooms[countRooms(price, persons, city, hotel)];
         int index = 0;
-        for(API api : apis){
+        for(API api : APIS){
             if(api != null) {
-                for(Room room : api.findRooms(price, persons, city, hotel)){
-                    if(room != null) {
-                        wantedRooms[index] = room;
+                for(Rooms rooms : api.findRooms(price, persons, city, hotel)){
+                    if(rooms != null) {
+                        wantedRooms[index] = rooms;
                         index++;
                     }
                 }
@@ -51,12 +51,12 @@ public class Controller {
         return wantedRooms;
     }
 
-    private int countSameRooms(API api1, API api2){
+    private int countSameRooms(API API1, API API2){
         int index = 0;
-        for(Room room1 : api1.getAll()){
-            if(room1 !=  null){
-                for(Room room2 : api2.getAll()){
-                    if(room1.getPrice() == room2.getPrice() && room1.getPersons() == room2.getPersons() && room1.getCityName() == room2.getCityName() && room1.getHotelName() == room2.getHotelName()){
+        for(Rooms rooms1 : API1.getAll()){
+            if(rooms1 !=  null){
+                for(Rooms rooms2 : API2.getAll()){
+                    if(rooms1.getPrice() == rooms2.getPrice() && rooms1.getPersons() == rooms2.getPersons() && rooms1.getCityName() == rooms2.getCityName() && rooms1.getHotelName() == rooms2.getHotelName()){
                         index++;
                     }
                 }
@@ -65,14 +65,14 @@ public class Controller {
         return index;
     }
 
-    public Room[] check(API api1, API api2){
-        Room[] sameRooms = new Room[countSameRooms(api1, api2)];
+    public Rooms[] check(API API1, API API2){
+        Rooms[] sameRooms = new Rooms[countSameRooms(API1, API2)];
         int index = 0;
-        for(Room room1 : api1.getAll()){
-            if(room1 !=  null){
-                for(Room room2 : api2.getAll()){
-                    if(room1.getPrice() == room2.getPrice() && room1.getPersons() == room2.getPersons() && room1.getCityName() == room2.getCityName() && room1.getHotelName() == room2.getHotelName()){
-                        sameRooms[index] = room1;
+        for(Rooms rooms1 : API1.getAll()){
+            if(rooms1 !=  null){
+                for(Rooms rooms2 : API2.getAll()){
+                    if(rooms1.getPrice() == rooms2.getPrice() && rooms1.getPersons() == rooms2.getPersons() && rooms1.getCityName() == rooms2.getCityName() && rooms1.getHotelName() == rooms2.getHotelName()){
+                        sameRooms[index] = rooms1;
                         index++;
                     }
                 }
@@ -83,9 +83,9 @@ public class Controller {
 
     private int firstRoomPrice() {
         int roomPrice = 0;
-        for(API api : apis) {
-            for(Room room : api.getAll()) {
-                roomPrice = room.getPrice();
+        for(API api : APIS) {
+            for(Rooms rooms : api.getAll()) {
+                roomPrice = rooms.getPrice();
                 break;
             }
             break;
@@ -93,21 +93,21 @@ public class Controller {
         return roomPrice;
     }
 
-    public Room cheapestRoom(){
+    public Rooms cheapestRoom(){
         int minRoomPrice = firstRoomPrice();
-        Room wantedCheapestRoom = null;
+        Rooms wantedCheapestRooms = null;
 
-        for(API api : apis) {
-            for(Room room : api.getAll()){
-                if(room != null){
-                    int roomPrice = room.getPrice();
+        for(API api : APIS) {
+            for(Rooms rooms : api.getAll()){
+                if(rooms != null){
+                    int roomPrice = rooms.getPrice();
                     if(roomPrice < minRoomPrice) {
                         minRoomPrice = roomPrice;
-                        wantedCheapestRoom = room;
+                        wantedCheapestRooms = rooms;
                     }
                 }
             }
         }
-        return wantedCheapestRoom;
+        return wantedCheapestRooms;
     }
 }
