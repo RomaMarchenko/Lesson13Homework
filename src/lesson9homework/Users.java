@@ -1,10 +1,10 @@
 package lesson9homework;
 
-public class User {
+public class Users {
     private long id;
     private String name;
     private String sessionId;
-    public User(long id, String name, String sessionId) {
+    public Users(long id, String name, String sessionId) {
         this.id = id;
         this.name = name;
         this.sessionId = sessionId;

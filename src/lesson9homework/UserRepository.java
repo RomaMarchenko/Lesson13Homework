@@ -1,23 +1,23 @@
 package lesson9homework;
 
 public class UserRepository {
-    private User[] users = new User[10];
+    private Users[] users = new Users[10];
 
     public UserRepository() {
     }
 
-    public UserRepository(User[] users) {
+    public UserRepository(Users[] users) {
         this.users = users;
     }
 
-    public User[] getUsers() {
+    public Users[] getUsers() {
         return users;
     }
 
     private int countUsers() {
         int countUsers = 0;
-        for (User user : users) {
-            if (user != null)
+        for (Users users : this.users) {
+            if (users != null)
                 countUsers++;
         }
         return countUsers;
@@ -26,9 +26,9 @@ public class UserRepository {
     public String[] getUserNames() {
         int index = 0;
         String[] names = new String[countUsers()];
-        for (User user : users) {
-            if (user != null) {
-                names[index] = user.getName()   ;
+        for (Users users : this.users) {
+            if (users != null) {
+                names[index] = users.getName()   ;
                 index++;
             }
 
@@ -40,9 +40,9 @@ public class UserRepository {
     public long[] getUserIds() {
         int index = 0;
         long[] ids = new long[countUsers()];
-        for (User user : users) {
-            if (user != null) {
-                ids[index] = user.getId();
+        for (Users users : this.users) {
+            if (users != null) {
+                ids[index] = users.getId();
                 index++;
             }
 
@@ -52,99 +52,99 @@ public class UserRepository {
 
     public String getUserNameById(long id) {
         String userName = null;
-        for (User user : users) {
-            if (user != null) {
-                long userID = user.getId();
+        for (Users users : this.users) {
+            if (users != null) {
+                long userID = users.getId();
                 if (userID == id) {
-                    userName = user.getName();
+                    userName = users.getName();
                 }
             }
         }
         return userName;
     }
 
-    public User getUserByName(String name) {
-        User wantedUser = null;
-        for (User user : users) {
-            if (user != null) {
-                String userName = user.getName();
+    public Users getUserByName(String name) {
+        Users wantedUsers = null;
+        for (Users users : this.users) {
+            if (users != null) {
+                String userName = users.getName();
                 if (userName == name) {
-                    wantedUser = user;
+                    wantedUsers = users;
                     break;
                 }
             }
         }
-        return wantedUser;
+        return wantedUsers;
     }
 
-    public User getUserById(long id) {
-        User wantedUser = null;
-        for (User user : users) {
-            if (user != null) {
-                long userId = user.getId();
+    public Users getUserById(long id) {
+        Users wantedUsers = null;
+        for (Users users : this.users) {
+            if (users != null) {
+                long userId = users.getId();
                 if (userId == id) {
-                    wantedUser = user;
+                    wantedUsers = users;
                     break;
                 }
             }
         }
-        return wantedUser;
+        return wantedUsers;
     }
 
-    public User getUserBySessionId(String sessionId) {
-        User wantedUser = null;
-        for (User user : users) {
-            if (user != null) {
-                String userSessionId = user.getSessionId();
+    public Users getUserBySessionId(String sessionId) {
+        Users wantedUsers = null;
+        for (Users users : this.users) {
+            if (users != null) {
+                String userSessionId = users.getSessionId();
                 if (userSessionId == sessionId) {
-                    wantedUser = user;
+                    wantedUsers = users;
                     break;
                 }
             }
         }
-        return wantedUser;
+        return wantedUsers;
     }
 
-    private User findById(long id) {
-        User repeatedUser = null;
-        for (User user : users) {
-            if (user != null) {
-                long userId = user.getId();
+    private Users findById(long id) {
+        Users repeatedUsers = null;
+        for (Users users : this.users) {
+            if (users != null) {
+                long userId = users.getId();
                 if (userId == id) {
-                    repeatedUser = user;
+                    repeatedUsers = users;
                 }
             }
         }
-        return repeatedUser;
+        return repeatedUsers;
     }
 
-    public User save(User user) {
-        if(user == null)
+    public Users save(Users users) {
+        if(users == null)
             return null;
 
-        if (findById(user.getId()) != null) {
+        if (findById(users.getId()) != null) {
             return null;
         }
         int index = 0;
-        for (User nullUser : users) {
-            if (nullUser == null) {
-                users[index] = user;
-                return user;
+        for (Users nullUsers : this.users) {
+            if (nullUsers == null) {
+                this.users[index] = users;
+                return users;
             }
             index++;
         }
         return null;
     }
 
-    public User update(User user) {
-        if(user == null)
+    public Users update(Users users) {
+        if(users == null)
             return null;
 
         int index = 0;
-        for (User wantedUser : users) {
-            if (wantedUser != null && wantedUser.getId() == user.getId()) {
-                users[index] = user;
-                return users[index];
+        for (Users wantedUsers : this.users) {
+            if (wantedUsers != null && wantedUsers.getId() == users.getId()) {
+                this.users[index] = users;
+                return this.users[index];
             }
             index++;
 
@@ -155,8 +155,8 @@ public class UserRepository {
 
         public void delete ( long id){
             int index = 0;
-            for (User wantedUser : users) {
-                if (findById(id) == wantedUser) {
+            for (Users wantedUsers : users) {
+                if (findById(id) == wantedUsers) {
                     users[index] = null;
                 }
                 index++;
